@@ -10,11 +10,11 @@ A continuación se presentan los documentos y archivos de programación utilizad
 
 
 ## Documentos
-- Documentos, en donde se encuentran el trabajo de graduación y protocolo que se realizó como propósito de este proyecto. 
-
+En esta carpeta se encuentran archivos de alta relevancia para la realización de este proyecto. Iniciando con los antecedentes de proyecto similares realizados en la Universidad del Valle de Guatemala, como la hoja de datos y el manual del protocolo de comunicación utilizados por el Hokuyo URG-04LX-UG01. Por último se enceuntra un documento con enlaces a archivos, videos y tutoriales referentes al tema. 
 
 
 ## Arduino - Matlab
+En esta carpeta se encuentran los archivos utilizados para realizar pruebas con el sensor Hokuyo URG-04LX-UG01. Para esto se utilizó un Arduino UNO con un USB Host Shield para la lectura de datos. Estos datos se envían por UART y son procesados en un programa de MATLAB en donde la información es decodificada y graficada. 
 
 ## ROS-ROVER-UVG
 
