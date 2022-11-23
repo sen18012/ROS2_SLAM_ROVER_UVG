@@ -10,7 +10,7 @@ A continuación se presentan los documentos y archivos de programación utilizad
 
 
 ## Documentos
-En esta carpeta se encuentran archivos de alta relevancia para la realización de este proyecto. Iniciando con los antecedentes de proyecto similares realizados en la Universidad del Valle de Guatemala, como la hoja de datos y el manual del protocolo de comunicación utilizados por el Hokuyo URG-04LX-UG01. Por último se enceuntra un documento con enlaces a archivos, videos y tutoriales referentes al tema. 
+En esta carpeta se encuentran archivos de alta relevancia para la realización de este proyecto. Iniciando con los antecedentes de proyecto similares realizados en la Universidad del Valle de Guatemala, como la hoja de datos y el manual del protocolo de comunicación utilizados por el Hokuyo URG-04LX-UG01. Por último se encuentra un documento con enlaces a archivos, videos y tutoriales referentes al tema. 
 
 
 ## Arduino - Matlab
@@ -51,6 +51,14 @@ Seguido a la instalación de ROS2 es necesario instalar una serie de paquetes in
 ```console
 ~$ sudo apt install ros-foxy-urg-node
 ```
+
+
+Distribución de carpetas dentro del Workspace ROS2-SLAM-ROVER-UVG
+
+- Paquete de Localización (odometry_pkg)
+
+- Paquete de SLAM (basic_mobile_robot)
+
 
 
 
