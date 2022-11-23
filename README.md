@@ -17,19 +17,41 @@ En esta carpeta se encuentran archivos de alta relevancia para la realización d
 En esta carpeta se encuentran los archivos utilizados para realizar pruebas con el sensor Hokuyo URG-04LX-UG01. Para esto se utilizó un Arduino UNO con un USB Host Shield para la lectura de datos. Estos datos se envían por UART y son procesados en un programa de MATLAB en donde la información es decodificada y graficada. 
 
 ## ROS-ROVER-UVG
+En esta carpeta se enceuntra el Workspace que contiene los paquetes (ROS2 pkg) necesarios para implementar SLAM en el Rover UVG utilizando como sensores un sistema de captura de movimineto marca Optitrack para obtener la pose del robot y para la lectura de las distancias del entorno un sensor Lidar Hokuyo URG-04LX-UG01.
 
-Es importante mencionar que todo el proyecto se realizó mendiante la versión de ROS 2, específicamente su distribución Foxy. Para poder ejecutar los programas de ROS fue necesario tener una máquina virtual con Linux. Fue por ello que se descargó VirtualBox del siguiente enlace: https://www.virtualbox.org/es, y se seleccionaron las siguientes características:
+Este proyecto se desarollo en la versión ROS2 Foxy Fitzroy, instalado en el sistema operativo Ubuntu 20.04 en una máquina virtual VMWare Workstation con las siguientes características:
+- Versión: 16.2
+- RAM: 4096 MB
+- Almacenamiento: 25 GB 
+
+Para la instalación de ROS2 Foxy se siguió la documentación oficial como guía y se realizó una instalación por medio de "debian packages" para incluir todos los packetes relacionados a simulación y visualización. Esta información se puede obtener en el siguiente enlace:  https://docs.ros.org/en/foxy/Installation.html
+
+Seguido a la instalación de ROS2 es necesario instalar una serie de paquetes independientes para el correcto funcionamiento del proyecto. 
 
 
-|Sistema Operativo|    RAM  | Procesadores| Almacenamiento |
-|-----------------|---------|-------------|----------------|
-| Ubuntu (64 bits)| 9192 MB |    2        | 30 GB            |
-
-
-
+- Instalación de paquetes Relacionados a Navigation Stack (Nav2) 
+```console
+~$ sudo apt install ros-foxy-joint-state-publisher-gui
+```
 
 ```console
-~$ sudo apt install python3-colcon-common-extensions
+~$ sudo apt install ros-foxy-xacro
 ```
+
+```console
+~$ sudo apt install ros-foxy-tf2-tools
+```
+
+- Instalación de SLAM Toolbox
+```console
+~$ sudo apt install ros-foxy-slam-toolbox
+```
+
+- Instalación de URG Node
+```console
+~$ sudo apt install ros-foxy-urg-node
+```
+
+
 
 
