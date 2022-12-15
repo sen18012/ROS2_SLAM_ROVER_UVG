@@ -60,11 +60,11 @@ def generate_launch_description():
         'robot_description': Command(['xacro ', model])}],
         arguments=[default_model_path])
     
-    start_sync_slam_toolbox_node = Node(
+    start_async_slam_toolbox_node = Node(
         parameters=[robot_slam_file_path,
           {'use_sim_time': use_sim_time}],
         package='slam_toolbox',
-        node_executable='sync_slam_toolbox_node',
+        node_executable='async_slam_toolbox_node',
         name='slam_toolbox',
         output='screen')
 
@@ -121,7 +121,7 @@ def generate_launch_description():
     #ld.add_action(node_tf2_fp2map)   
     
     ld.add_action(start_robot_state_publisher_cmd)
-    ld.add_action(start_sync_slam_toolbox_node)
+    ld.add_action(start_async_slam_toolbox_node)
     ld.add_action(start_rviz_cmd)
     
 

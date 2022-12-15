@@ -14,10 +14,10 @@ def generate_launch_description():
     default_launch_dir = os.path.join(pkg_share, 'launch')
     default_model_path = os.path.join(pkg_share, 'models/basic_mobile_bot_v2.urdf')
     robot_name_in_urdf = 'basic_mobile_bot'
-    default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf_config.rviz')
+    default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf_config_slam.rviz')
     robot_localization_file_path = os.path.join(pkg_share, 'config/ekf_real.yaml') 
     robot_slam_file_path = os.path.join(pkg_share, 'params/mapper_params_online_sync.yaml') 
-    default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf_config.rviz')
+    params_urg_file_path = os.path.join(pkg_share, 'params/urg.yaml')
     
     model = LaunchConfiguration('model')
     rviz_config_file = LaunchConfiguration('rviz_config_file')
@@ -88,6 +88,21 @@ def generate_launch_description():
         arguments=['0', '0', '0', '0.0', '0.0', '0.0', 'odom', 'base_footprint'], 
         )
         
+    ## tf2 - base_footprint to map
+    node_tf2_map2odom = Node(
+        name='tf2_ros_fp_map',
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        output='screen',
+        arguments=['0.015', '0.015', '0.015', '0.0', '0.0', '0.0', 'map', 'odom'], 
+        )
+    # Start comunnication with the Optitrack
+    start_com_optitrack = Node(
+        package='basic_mobile_robot',
+        name= 'optitrack_client',
+        executable= "optitrack_client.py",
+        output='screen')      
+        
    # Launch RViz
     start_rviz_cmd = Node(
         condition=IfCondition(use_rviz),
@@ -95,7 +110,16 @@ def generate_launch_description():
         executable='rviz2',
         name='rviz2',
         output='screen',
-        arguments=['-d', rviz_config_file])             
+        arguments=['-d', rviz_config_file])
+        
+    start_urg_node_cmd=Node(
+        name= 'urg_node',
+        package = 'urg_node',
+        executable = 'urg_node_driver',
+        # output = 'screen',
+        parameters = [params_urg_file_path],
+        remappings=[('scan','scan'),])
+   	             
         
     ld = LaunchDescription()
   # Declare the launch options
@@ -105,10 +129,7 @@ def generate_launch_description():
     ld.add_action(declare_use_robot_state_pub_cmd) 
     ld.add_action(declare_use_sim_time_argument)
     
-
     ld.add_action(start_robot_state_publisher_cmd)
-    ld.add_action(start_robot_localization_cmd)
-    #ld.add_action(node_tf2_fp2map)   
     ld.add_action(start_rviz_cmd)
     
 
