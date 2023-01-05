@@ -53,11 +53,7 @@ Seguido a la instalación de ROS2 es necesario instalar una serie de paquetes in
 ```
 
 
-Distribución de carpetas dentro del Workspace ROS2-SLAM-ROVER-UVG
 
-- Paquete de Localización (odometry_pkg)
-
-- Paquete de SLAM (basic_mobile_robot)
 
 
 
